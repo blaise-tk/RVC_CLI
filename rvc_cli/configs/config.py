@@ -1,11 +1,9 @@
-import argparse
 import os
-import sys
 import json
 from multiprocessing import cpu_count
-
 import torch
 
+current_directory = os.getcwd()
 version_config_list = [
     "v1/32000.json",
     "v1/40000.json",
@@ -42,7 +40,7 @@ class Config:
     def load_config_json() -> dict:
         d = {}
         for config_file in version_config_list:
-            with open(f"rvc/configs/{config_file}", "r") as f:
+            with open(f"{current_directory}/configs/{config_file}", "r") as f:
                 d[config_file] = json.load(f)
         return d
 
@@ -66,13 +64,13 @@ class Config:
     def use_fp32_config(self):
         for config_file in version_config_list:
             self.json_config[config_file]["train"]["fp16_run"] = False
-            with open(f"rvc/configs/{config_file}", "r") as f:
+            with open(f"{current_directory}/configs/{config_file}", "r") as f:
                 strr = f.read().replace("true", "false")
-            with open(f"rvc/configs/{config_file}", "w") as f:
+            with open(f"{current_directory}/configs/{config_file}", "w") as f:
                 f.write(strr)
-        with open("rvc/train/preprocess/preprocess.py", "r") as f:
+        with open(f"{current_directory}/train/preprocess/preprocess.py", "r") as f:
             strr = f.read().replace("3.7", "3.0")
-        with open("rvc/train/preprocess/preprocess.py", "w") as f:
+        with open(f"{current_directory}/train/preprocess/preprocess.py", "w") as f:
             f.write(strr)
 
     def device_config(self) -> tuple:
@@ -100,9 +98,13 @@ class Config:
                 + 0.4
             )
             if self.gpu_mem <= 4:
-                with open("rvc/train/preprocess/preprocess.py", "r") as f:
+                with open(
+                    f"{current_directory}/train/preprocess/preprocess.py", "r"
+                ) as f:
                     strr = f.read().replace("3.7", "3.0")
-                with open("rvc/train/preprocess/preprocess.py", "w") as f:
+                with open(
+                    f"{current_directory}/train/preprocess/preprocess.py", "w"
+                ) as f:
                     f.write(strr)
         elif self.has_mps():
             print("No supported Nvidia GPU found")
