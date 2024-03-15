@@ -52,7 +52,7 @@ setup(
     long_description=(README),
     long_description_content_type="text/markdown",
     # requirements
-    python_requires=">=3.9",
+    python_requires=">=3.7, <3.11",
     install_requires=ML_DEPENDENCIES + OTHER_DEPENDENCIES,
     classifiers=[
         "License :: OSI Approved :: Attribution-NonCommercial 4.0 International",

@@ -9,16 +9,16 @@ import soundfile as sf
 from pipeline import VC
 from scipy.io import wavfile
 import noisereduce as nr
-from rvc.lib.utils import load_audio
-from rvc.lib.tools.split_audio import process_audio, merge_audio
+from lib.utils import load_audio
+from lib.tools.split_audio import process_audio, merge_audio
 from fairseq import checkpoint_utils
-from rvc.lib.infer_pack.models import (
+from lib.infer_pack.models import (
     SynthesizerTrnMs256NSFsid,
     SynthesizerTrnMs256NSFsid_nono,
     SynthesizerTrnMs768NSFsid,
     SynthesizerTrnMs768NSFsid_nono,
 )
-from rvc.configs.config import Config
+from configs.config import Config
 
 logging.getLogger("fairseq").setLevel(logging.WARNING)
 

@@ -3,7 +3,7 @@ import json
 import pathlib
 from random import shuffle
 
-from rvc.configs.config import Config
+from configs.config import Config
 
 config = Config()
 current_directory = os.getcwd()
