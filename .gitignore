@@ -4,6 +4,6 @@
 *pth
 *.pyc
 
-logs
-env
-venv
+dist
+build
+rvc_cli.egg-info
