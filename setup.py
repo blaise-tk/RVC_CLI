@@ -31,13 +31,9 @@ OTHER_DEPENDENCIES = [
     'einops',
     'local-attention',
     'matplotlib==3.7.2',
-    'tensorboard',
     'ffmpy==0.3.1',
-    'tensorboardX',
     'edge-tts==6.1.9',
     'pydantic',
-    'fastapi',
-    'uvicorn',
 ]
 
 setup(
